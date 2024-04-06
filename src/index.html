@@ -17,11 +17,11 @@
     <link rel="stylesheet" href="./css/styles.css" />
   </head>
   <body>
-    <form class="action">
+    <form action="submit" class="form-submit js-search">
       <input
         class="input text"
         type="text"
-        name="query"
+        name="searchQuery"
         autocomplete="off"
         placeholder="Search images..."
       />
@@ -29,8 +29,8 @@
     </form>
 
     <div class="container">
-      <div class="gallery"></div>
-      <p class="loading-text is-hidden">Loading images, please wait...</p>
+      <ul class="gallery"></ul>
+      <p class=".loading-text hidden">Loading images, please wait...</p>
     </div>
     <script type="module" src="./main.js"></script>
   </body>
