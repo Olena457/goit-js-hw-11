@@ -66,54 +66,27 @@ body {
   letter-spacing: 0.64px;
   transition: background-color 300ms linear, color 300ms linear;
 }
+
 .button-search:hover {
   background: #6c8cff;
   color: #fff;
 }
-.container {
-  max-width: 1440px;
-  height: auto;
-}
 
-.gallery {
-  display: flex;
-  flex-wrap: wrap;
-  gap: 24px;
-  max-width: 1128px;
-  justify-content: center;
-  list-style: none;
-  margin: 0 auto;
-}
-.gallery-item {
-  /* position: relative; */
-  flex: 0 0 calc(33.33% - 24px);
-  list-style: none;
-}
-.gallery-link {
-  text-decoration: none;
-
-  display: flex;
-  transition: all 0.2s ease-in-out;
-  cursor: pointer;
-  height: 100%;
-}
-.gallery-link:hover {
-  cursor: zoom-in;
-}
-.gallery-image {
+.cover-loading {
   width: 100%;
-  height: auto;
-  object-fit: cover;
-  transition: transform 250ms cubic-bezier(0.4, 0, 0.2, 1);
+  height: 100%;
+  background: #fafafa;
+  transition: 0.1s;
+  display: flex;
+  justify-content: center;
+  align-items: center;
 }
-.gallery-image:hover {
-  transform: scale(1.03);
-}
-.loader.hidden {
-  width: 48px;
-  height: 48px;
-  border: 5px solid #fff;
-  border-bottom-color: #002aff;
+
+.loader {
+  width: 75px;
+  height: 75px;
+  border: 5px solid #2c9de389;
+  border-bottom-color: #0b3b93;
   border-radius: 50%;
   display: inline-block;
   box-sizing: border-box;
@@ -128,13 +101,67 @@ body {
     transform: rotate(360deg);
   }
 }
-/* .loading-text {
+
+.hidden {
+  opacity: 0;
+}
+
+.container {
+  max-width: 1440px;
+  height: auto;
+}
+
+.gallery {
   display: flex;
-  color: #2e2f42;
-  font-family: Montserrat;
-  font-size: 16px;
-  line-height: 1.5;
-  letter-spacing: 0.64px;
+  flex-wrap: wrap;
+  gap: 24px;
+  max-width: 1128px;
+  justify-content: center;
+  align-items: center;
+  list-style: none;
+  margin: 0 auto;
+}
+
+.gallery-item {
+  /* position: relative; */
   flex-direction: column;
   align-items: center;
-} */
+  flex: 0 0 calc(33.33% - 24px);
+}
+
+.gallery-link {
+  text-decoration: none;
+  display: flex;
+  transition: all 0.2s ease-in-out;
+  cursor: pointer;
+  height: 100%;
+}
+.gallery-link:hover {
+  cursor: zoom-in;
+}
+
+.gallery-image {
+  width: 100%;
+  height: auto;
+  width: 360px;
+  height: 200px;
+  border: 1px solid #808080;
+  object-fit: cover;
+  transition: transform 250ms cubic-bezier(0.4, 0, 0.2, 1);
+}
+.gallery-image:hover {
+  transform: scale(1.03);
+}
+
+.caption {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  border: 1px solid #808080;
+  border-top-style: none;
+}
+.caption-item {
+  display: flex;
+  flex-direction: column;
+  text-align: center;
+}

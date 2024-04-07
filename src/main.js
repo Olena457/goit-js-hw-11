@@ -6,7 +6,7 @@ import { galleryEl } from './js/render-functions';
 import { renderImages } from './js/render-functions';
 
 const searchForm = document.querySelector('.js-search');
-const loaderEl = document.querySelector('.loader');
+let cover = document.querySelector('.cover-loading');
 
 searchForm.addEventListener('submit', handleSearchSubmit);
 
@@ -14,15 +14,29 @@ async function handleSearchSubmit(ev) {
   ev.preventDefault();
 
   const query = ev.target.elements.query.value;
-
-  galleryEl.innerHTML = '';
-  // loaderEl.classList.remove('hidden');
-  try {
-    const data = await fetchImages(query);
-    if (data.hits.length === 0 || query === '') {
+  window.addEventListener('load', () => {
+    if (query === '') {
       iziToast.show({
         title: 'Error',
-        message: `"Sorry, there are no images matching your search query. Please try again!"`,
+        message: `Please enter a search query!`,
+        position: 'topRight',
+        color: '#da1418',
+        timeout: 2000,
+      });
+      return;
+    } else {
+      cover.classList.remove('hidden');
+    }
+  });
+
+  galleryEl.innerHTML = '';
+
+  try {
+    const data = await fetchImages(query);
+    if (data.hits.length === 0) {
+      iziToast.show({
+        title: 'Error',
+        message: `Sorry, there are no images matching your search query. Please try again!`,
         position: 'topRight',
         color: '#da1418',
         timeout: 2000,
@@ -39,6 +53,6 @@ async function handleSearchSubmit(ev) {
       timeout: 2000,
     });
   } finally {
-    loaderEl.classList.add('hidden');
+    cover.classList.add('hidden');
   }
 }

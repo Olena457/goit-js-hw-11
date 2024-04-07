@@ -17,27 +17,39 @@ export function renderImages(images) {
     }) => {
       return ` 
       <li class="gallery-item">
-      <span class="loader hidden"></span>
     <a class="gallery-link" href="${largeImageURL}">
-    <img class="gallery-img" src="${webformatURL}" alt="${tags}">
-    <div class="image-description">
-    <p>likes: ${likes}</p>
-    <p>views: ${views}</p>    
-    <p>comments: ${comments}</p>
-    <p>downloads: ${downloads}</p> 
-    </div>
+    <img class="gallery-image" src="${webformatURL}" alt="${tags}">
     </a>
+    <div class='caption'>
+    <p class='caption-item'>
+      <b>Likes</b>
+      ${likes}
+    </p>
+    <p class='caption-item'>
+      <b>Views</b>
+      ${views}
+    </p>
+    <p class='caption-item'>
+      <b>Comments</b>
+      ${comments}
+    </p>
+    <p class='caption-item'>
+      <b>Downloads</b>
+      ${downloads}
+    </p>
+  </div>
     </li>`;
     }
   );
   galleryEl.insertAdjacentHTML('beforeend', markup.join(''));
 }
+
 const lightbox = new SimpleLightbox('.gallery a');
 lightbox.refresh();
 
-// galleryEl.addEventListener('click', event => {
-//   if (event.target.classList.contains('gallery-img')) {
-//     event.preventDefault();
-//     lightbox.open();
-//   }
-// });
+galleryEl.addEventListener('click', event => {
+  if (event.target.classList.contains('gallery-image')) {
+    event.preventDefault();
+    lightbox.open();
+  }
+});
