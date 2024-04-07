@@ -18,14 +18,14 @@
     <script type="module" crossorigin src="/goit-js-hw-11/commonHelpers.js"></script>
     <link rel="modulepreload" crossorigin href="/goit-js-hw-11/assets/vendor-8c59ed88.js">
     <link rel="stylesheet" href="/goit-js-hw-11/assets/vendor-1cd1f9d9.css">
-    <link rel="stylesheet" href="/goit-js-hw-11/assets/index-59cc82f1.css">
+    <link rel="stylesheet" href="/goit-js-hw-11/assets/index-eefde559.css">
   </head>
   <body>
-    <form action="submit" class="form-submit js-search">
+    <form method="get" action="/submit" class="form-submit js-search">
       <input
         class="input text"
         type="text"
-        name="searchQuery"
+        name="query"
         autocomplete="off"
         placeholder="Search images..."
       />
@@ -34,7 +34,6 @@
 
     <div class="container">
       <ul class="gallery"></ul>
-      <p class=".loading-text hidden">Loading images, please wait...</p>
     </div>
     
   </body>
