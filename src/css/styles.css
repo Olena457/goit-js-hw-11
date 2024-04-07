@@ -72,16 +72,6 @@ body {
   color: #fff;
 }
 
-.cover-loading {
-  width: 100%;
-  height: 100%;
-  background: #fafafa;
-  transition: 0.1s;
-  display: flex;
-  justify-content: center;
-  align-items: center;
-}
-
 .loader {
   width: 75px;
   height: 75px;
@@ -91,6 +81,11 @@ body {
   display: inline-block;
   box-sizing: border-box;
   animation: rotation 1s linear infinite;
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  margin-right: -50%;
+  transform: translate(-50%, -50%);
 }
 
 @keyframes rotation {

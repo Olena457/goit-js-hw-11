@@ -1,8 +1,3 @@
-// Описаний у документації
-import SimpleLightbox from 'simplelightbox';
-// Додатковий імпорт стилів
-import 'simplelightbox/dist/simple-lightbox.min.css';
-
 export const galleryEl = document.querySelector('.gallery');
 export function renderImages(images) {
   const markup = images.map(
@@ -43,13 +38,3 @@ export function renderImages(images) {
   );
   galleryEl.insertAdjacentHTML('beforeend', markup.join(''));
 }
-
-const lightbox = new SimpleLightbox('.gallery a');
-lightbox.refresh();
-
-galleryEl.addEventListener('click', event => {
-  if (event.target.classList.contains('gallery-image')) {
-    event.preventDefault();
-    lightbox.open();
-  }
-});

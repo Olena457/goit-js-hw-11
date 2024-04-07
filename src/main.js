@@ -1,12 +1,17 @@
 import iziToast from 'izitoast';
 import 'izitoast/dist/css/iziToast.min.css';
 
+import SimpleLightbox from 'simplelightbox';
+import 'simplelightbox/dist/simple-lightbox.min.css';
+
 import { fetchImages } from './js/pixabay-api';
 import { galleryEl } from './js/render-functions';
 import { renderImages } from './js/render-functions';
 
+const lightbox = new SimpleLightbox('.gallery a');
+
 const searchForm = document.querySelector('.js-search');
-let cover = document.querySelector('.cover-loading');
+let preloader = document.querySelector('.loader');
 
 searchForm.addEventListener('submit', handleSearchSubmit);
 
@@ -14,20 +19,19 @@ async function handleSearchSubmit(ev) {
   ev.preventDefault();
 
   const query = ev.target.elements.query.value;
-  window.addEventListener('load', () => {
-    if (query === '') {
-      iziToast.show({
-        title: 'Error',
-        message: `Please enter a search query!`,
-        position: 'topRight',
-        color: '#da1418',
-        timeout: 2000,
-      });
-      return;
-    } else {
-      cover.classList.remove('hidden');
-    }
-  });
+
+  if (query === '') {
+    iziToast.show({
+      title: 'Error',
+      message: `Please enter a search query!`,
+      position: 'topRight',
+      color: '#da1418',
+      timeout: 2000,
+    });
+    return;
+  }
+
+  preloader.classList.remove('hidden');
 
   galleryEl.innerHTML = '';
 
@@ -43,6 +47,7 @@ async function handleSearchSubmit(ev) {
       });
     } else {
       renderImages(data.hits);
+      lightbox.refresh();
     }
   } catch (error) {
     iziToast.show({
@@ -53,6 +58,6 @@ async function handleSearchSubmit(ev) {
       timeout: 2000,
     });
   } finally {
-    cover.classList.add('hidden');
+    preloader.classList.add('hidden');
   }
 }
