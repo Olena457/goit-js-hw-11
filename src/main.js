@@ -1,7 +1,6 @@
 import iziToast from 'izitoast';
 import 'izitoast/dist/css/iziToast.min.css';
-// import css from './style.css';
-// console.log(css);
+
 import { fetchImages } from './js/pixabay-api';
 import { galleryEl } from './js/render-functions';
 import { renderImages } from './js/render-functions';
@@ -14,10 +13,10 @@ searchForm.addEventListener('submit', handleSearchSubmit);
 async function handleSearchSubmit(ev) {
   ev.preventDefault();
 
-  const query = ev.target.elementsr;
+  const query = ev.target.elements.query.value;
 
   galleryEl.innerHTML = '';
-  loaderEl.classList.remove('hidden');
+  // loaderEl.classList.remove('hidden');
   try {
     const data = await fetchImages(query);
     if (data.hits.length === 0 || query === '') {

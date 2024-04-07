@@ -15,7 +15,9 @@ export function renderImages(images) {
       comments,
       downloads,
     }) => {
-      return `<li class="gallery-item">
+      return ` 
+      <li class="gallery-item">
+      <span class="loader hidden"></span>
     <a class="gallery-link" href="${largeImageURL}">
     <img class="gallery-img" src="${webformatURL}" alt="${tags}">
     <div class="image-description">
@@ -33,9 +35,9 @@ export function renderImages(images) {
 const lightbox = new SimpleLightbox('.gallery a');
 lightbox.refresh();
 
-galleryEl.addEventListener('click', event => {
-  if (event.target.classList.contains('gallery-img')) {
-    event.preventDefault();
-    lightbox.open();
-  }
-});
+// galleryEl.addEventListener('click', event => {
+//   if (event.target.classList.contains('gallery-img')) {
+//     event.preventDefault();
+//     lightbox.open();
+//   }
+// });
